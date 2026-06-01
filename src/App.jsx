@@ -3,7 +3,6 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import './App.css';
 
-// Chart.js components ko register karna lazmi hai
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function App() {
@@ -11,23 +10,19 @@ function App() {
   const [name, setName] = useState('');
   const [score, setScore] = useState('');
 
-  // --- Logic: Student Add Karna ---
   const addStudent = () => {
-    // Validation: Sirf alphabets
     const namePattern = /^[A-Za-z\s]+$/;
     if (!namePattern.test(name)) {
       alert("Invalid Name! Please use alphabets only.");
       return;
     }
 
-    // Validation: Score 0-100
     const s = parseInt(score);
     if (isNaN(s) || s < 0 || s > 100) {
       alert("Invalid Score! Please enter a number between 0 and 100.");
       return;
     }
 
-    // Grade Logic
     let grade = "";
     if (s >= 90) grade = 'A+';
     else if (s >= 80) grade = 'B';
@@ -42,7 +37,6 @@ function App() {
     document.getElementById('studentName').focus();
   };
 
-  
   const handleKeyDown = (e, target) => {
     if (e.key === 'Enter') {
       if (target === 'name' && name.trim() !== "") {
@@ -52,7 +46,6 @@ function App() {
       }
     }
   };
-
 
   const exportToCSV = () => {
     if (students.length === 0) return alert("No data to export!");
@@ -65,7 +58,6 @@ function App() {
     a.download = 'Grade_Report.csv';
     a.click();
   };
-
 
   const chartData = {
     labels: ['A+', 'B', 'C', 'D', 'E', 'F'],
@@ -135,7 +127,7 @@ function App() {
           <div className="average">Class Average: {average}</div>
           
           <button className="btn-export" onClick={exportToCSV}>
-            Download Report (Excel)
+            Download Report (CSV)
           </button>
         </div>
 
