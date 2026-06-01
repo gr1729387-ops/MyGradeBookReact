@@ -42,7 +42,7 @@ function App() {
     document.getElementById('studentName').focus();
   };
 
-  // --- Logic: Enter Key Movement ---
+  
   const handleKeyDown = (e, target) => {
     if (e.key === 'Enter') {
       if (target === 'name' && name.trim() !== "") {
@@ -53,7 +53,7 @@ function App() {
     }
   };
 
-  // --- Logic: Export to CSV ---
+
   const exportToCSV = () => {
     if (students.length === 0) return alert("No data to export!");
     let csv = "Name,Score,Grade\n";
@@ -66,7 +66,7 @@ function App() {
     a.click();
   };
 
-  // --- Chart Data Structure ---
+
   const chartData = {
     labels: ['A+', 'B', 'C', 'D', 'E', 'F'],
     datasets: [{
